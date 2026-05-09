@@ -7,7 +7,7 @@
 <meta name="description" content="A free, single-page educational escape game built on Piranesi's Carceri d'Invenzione. Provided by the CrimRxiv Consortium." />
 <meta name="theme-color" content="#0a0a0a" />
 <meta property="og:title" content="Escape the Carceri" />
-<meta property="og:description" content="Six rooms. Six prisons. One escape. A Piranesi-inspired educational game from the CrimRxiv Consortium." />
+<meta property="og:description" content="Sixteen rooms. Sixteen prisons. One escape. A Piranesi-inspired educational game from the CrimRxiv Consortium." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='20' fill='%23f68212'>C</text></svg>" />
 <link rel="stylesheet" href="styles.css" />
@@ -24,6 +24,7 @@
     </span>
   </div>
   <div class="topbar-actions">
+    <a id="galleryLink" class="btn btn-ghost" href="#gallery">Gallery</a>
     <button id="instructionsBtn" class="btn btn-ghost" aria-haspopup="dialog">How to play</button>
     <button id="themeBtn" class="btn btn-ghost" aria-pressed="false" aria-label="Toggle dark mode">
       <span class="theme-label">Dark</span>
@@ -38,17 +39,18 @@
     <div class="intro-grid">
       <div class="intro-copy">
         <p class="kicker">An educational escape game</p>
-        <h1 class="display">Six prisons.<br/>One way out.</h1>
+        <h1 class="display">Sixteen prisons.<br/>One way out.</h1>
         <p class="lead">In 1745, Giovanni Battista Piranesi began etching <em>Le Carceri d'Invenzione</em> — the <em>Imaginary Prisons</em>. Vast vaults. Endless stairs. Machinery without purpose. You are inside them now.</p>
         <p class="lead">Move from plate to plate. Read what the architecture is doing. Earn your escape.</p>
         <div class="cta-row">
           <button id="startBtn" class="btn btn-primary btn-lg">Start escape</button>
+          <a href="#gallery" class="btn btn-ghost btn-lg">Browse all 16 plates</a>
           <a href="#about" class="btn btn-ghost btn-lg">About &amp; sources</a>
         </div>
         <p class="micro">Free · No account · Works on phones · Plays in ~10 minutes</p>
       </div>
       <figure class="intro-figure">
-        <img src="assets/01_title_page.jpg" alt="Piranesi's frontispiece etching for Le Carceri d'Invenzione, second edition, 1761." loading="eager" />
+        <img src="assets/p01_title_page.jpg" alt="Piranesi's frontispiece etching for Le Carceri d'Invenzione, second edition, 1761." loading="eager" />
         <figcaption>Title plate, <em>Le Carceri d'Invenzione</em>, 1761. LACMA, public domain.</figcaption>
       </figure>
     </div>
@@ -58,8 +60,8 @@
   <section id="screen-game" class="screen screen-game" hidden>
     <div class="hud">
       <div class="hud-progress">
-        <span class="hud-label" id="hudLabel">Room 1 of 6</span>
-        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="progressBar">
+        <span class="hud-label" id="hudLabel">Room 1 of 16</span>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" id="progressBar">
           <span class="progress-fill" id="progressFill"></span>
         </div>
       </div>
@@ -70,6 +72,20 @@
     </div>
 
     <div class="room" id="room"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="screen-gallery" class="screen screen-gallery" hidden>
+    <div class="gallery-head">
+      <p class="kicker">All sixteen plates</p>
+      <h2 class="display">The Carceri, in full.</h2>
+      <p class="lead">Browse every plate of Piranesi's <em>Le Carceri d'Invenzione</em> (second edition, 1761). Click any plate for a larger view, museum source, and a short note.</p>
+      <div class="cta-row">
+        <button id="galleryStartBtn" class="btn btn-primary btn-lg">Play the escape</button>
+        <a href="#" id="galleryHomeBtn" class="btn btn-ghost btn-lg">Back to start</a>
+      </div>
+    </div>
+    <div id="galleryGrid" class="gallery-grid" aria-label="All sixteen Carceri plates"></div>
   </section>
 
   <!-- CERTIFICATE -->
@@ -95,7 +111,7 @@
           <h3 class="cert-title">I Escaped Piranesi's Carceri</h3>
           <p class="cert-this">This certifies that</p>
           <p class="cert-name" id="certNameOut">—</p>
-          <p class="cert-body">navigated the six imaginary prisons of Giovanni Battista Piranesi's <em>Carceri d'Invenzione</em> and emerged on the other side.</p>
+          <p class="cert-body">navigated the sixteen imaginary prisons of Giovanni Battista Piranesi's <em>Carceri d'Invenzione</em> and emerged on the other side.</p>
           <div class="cert-foot">
             <div>
               <span class="cert-foot-label">Date</span>
@@ -125,18 +141,26 @@
         <p>The game is provided by the <strong>CrimRxiv Consortium</strong>. Everything runs in your browser. No accounts, no cookies, no analytics, no data leaves your device.</p>
 
         <h3>Sources &amp; rights</h3>
-        <p>All Piranesi etchings used here are in the <strong>public domain</strong>. The high-resolution scans were donated by the <strong>Los Angeles County Museum of Art (LACMA)</strong>, William Randolph Hearst Collection, and made available through Wikimedia Commons.</p>
+        <p>All Piranesi etchings used here are in the <strong>public domain</strong>. Most high-resolution scans were donated by the <strong>Los Angeles County Museum of Art (LACMA)</strong>, William Randolph Hearst Collection, and made available through Wikimedia Commons. Plate VII (<em>The Drawbridge</em>) is from the Google Art Project via Wikimedia Commons.</p>
         <ul class="sources">
           <li><a href="https://commons.wikimedia.org/wiki/File:Title_Page_LACMA_46.27.1.jpg" target="_blank" rel="noopener">Title Page, plate I</a> — LACMA 46.27.1, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Man_on_the_Rack_LACMA_46.27.2.jpg" target="_blank" rel="noopener">The Man on the Rack, plate II</a> — LACMA 46.27.2, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Round_Tower_LACMA_46.27.3.jpg" target="_blank" rel="noopener">The Round Tower, plate III</a> — LACMA 46.27.3, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Grand_Piazza_LACMA_46.27.4.jpg" target="_blank" rel="noopener">The Grand Piazza, plate IV</a> — LACMA 46.27.4, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Lion_Bas-Reliefs_LACMA_46.27.5.jpg" target="_blank" rel="noopener">The Lion Bas-Reliefs, plate V</a> — LACMA 46.27.5, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Smoking_Fire_LACMA_46.27.6.jpg" target="_blank" rel="noopener">The Smoking Fire, plate VI</a> — LACMA 46.27.6, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi_-_The_Drawbridge_-_Google_Art_Project.jpg" target="_blank" rel="noopener">The Drawbridge, plate VII</a> — Google Art Project / Wikimedia Commons, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Staircase_with_Trophies_LACMA_46.27.8.jpg" target="_blank" rel="noopener">The Staircase with Trophies, plate VIII</a> — LACMA 46.27.8, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Giant_Wheel_LACMA_46.27.9.jpg" target="_blank" rel="noopener">The Giant Wheel, plate IX</a> — LACMA 46.27.9, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Prisoners_on_a_Projecting_Platform_LACMA_46.27.10.jpg" target="_blank" rel="noopener">Prisoners on a Projecting Platform, plate X</a> — LACMA 46.27.10, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Arch_with_a_Shell_Ornament_LACMA_46.27.11.jpg" target="_blank" rel="noopener">The Arch with a Shell Ornament, plate XI</a> — LACMA 46.27.11, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Sawhorse_LACMA_46.27.12.jpg" target="_blank" rel="noopener">The Sawhorse, plate XII</a> — LACMA 46.27.12, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Well_LACMA_46.27.13.jpg" target="_blank" rel="noopener">The Well, plate XIII</a> — LACMA 46.27.13, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Gothic_Arch_LACMA_46.27.14.jpg" target="_blank" rel="noopener">The Gothic Arch, plate XIV</a> — LACMA 46.27.14, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Pier_with_a_Lamp_LACMA_46.27.15.jpg" target="_blank" rel="noopener">The Pier with a Lamp, plate XV</a> — LACMA 46.27.15, public domain.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:The_Pier_with_Chains_LACMA_46.27.16.jpg" target="_blank" rel="noopener">The Pier with Chains, plate XVI</a> — LACMA 46.27.16, public domain.</li>
         </ul>
-        <p class="micro">Piranesi died in 1778; the etchings are out of copyright in every jurisdiction. LACMA marks the high-resolution scans as public domain. We re-host the images locally so the game is robust and offline-friendly after first load.</p>
+        <p class="micro">Piranesi died in 1778; the etchings are out of copyright in every jurisdiction. LACMA and the Google Art Project mark the high-resolution scans as public domain. We re-host the images locally so the game is robust and offline-friendly after first load.</p>
 
         <h3>License</h3>
         <p>Site code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a>. Original copy, design, and puzzle text: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> — please credit the <a href="https://www.crimrxiv.com/consortium" target="_blank" rel="noopener">CrimRxiv Consortium</a> when reusing.</p>
@@ -144,14 +168,18 @@
       <aside class="about-aside">
         <h3>What you'll do</h3>
         <ol class="about-list">
-          <li>Get oriented in Piranesi's title plate.</li>
-          <li>Identify a visible architectural feature.</li>
-          <li>Match a clue to the right plate.</li>
-          <li>Match a title to a plate.</li>
-          <li>Read scale, machinery, and confinement.</li>
-          <li>Synthesize the journey to escape.</li>
+          <li>Read the inscription on Piranesi's title plate.</li>
+          <li>Identify visible architectural features.</li>
+          <li>Match clues to the right plate.</li>
+          <li>Order means of restraint by severity.</li>
+          <li>Find a detail with a region hotspot.</li>
+          <li>Fill in plate titles.</li>
+          <li>Compare two plates side by side.</li>
+          <li>Spot the odd plate out.</li>
+          <li>Set a final lock to escape.</li>
         </ol>
         <p>Click-only. No typing required (except your name on the certificate).</p>
+        <p><a href="#gallery">Or just browse all 16 plates →</a></p>
       </aside>
     </div>
   </section>
@@ -177,15 +205,19 @@
   <div class="dialog-inner">
     <h2 id="instructionsTitle">How to play</h2>
     <ul>
-      <li>You'll move through six plates from Piranesi's <em>Carceri</em>.</li>
+      <li>You'll move through sixteen plates from Piranesi's <em>Carceri</em>.</li>
       <li>Every puzzle is click-only. There's nothing to type until the end.</li>
       <li>Stuck? Hit <strong>Hint</strong>. It won't penalize you.</li>
       <li>Wrong answers don't end the game — you can keep trying.</li>
       <li>At the end you'll generate a printable certificate. Your name stays in your browser.</li>
+      <li>Want to skip the puzzles? Open the <a href="#gallery">Gallery</a> to browse all 16 plates.</li>
     </ul>
     <button class="btn btn-primary" data-close-dialog>Got it</button>
   </div>
 </dialog>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Plate detail" tabindex="-1"></div>
 
 <!-- TOAST -->
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
