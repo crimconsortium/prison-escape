@@ -832,6 +832,11 @@ img.brand-mark {
   background: var(--bg-soft);
   border-top: 1px solid var(--line-soft);
 }
+/* While playing, hide the static About / Sources panel — it lists every
+   plate by full title and would spoil title-based puzzles (rooms 8, 9,
+   10, 13). The panel is still reachable from the intro and the
+   certificate screens. */
+body.is-playing #about { display: none; }
 .about {
   padding: clamp(40px, 5vw, 72px) var(--gutter);
 }

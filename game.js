@@ -377,6 +377,9 @@
       if (!el) return;
       el.classList.toggle("is-active", el.hidden ? false : true);
     });
+    // Hide the static About / Sources panel while the player is mid-game
+    // (it lists every plate by title and would spoil title-based puzzles).
+    document.body.classList.toggle("is-playing", name === "game");
     if (name === "game" || name === "done" || name === "gallery") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
