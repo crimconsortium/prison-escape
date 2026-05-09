@@ -178,17 +178,13 @@ em { font-style: italic; }
   color: inherit;
   text-decoration: none;
 }
-.brand-mark {
+img.brand-mark {
   grid-column: 1; grid-row: 1 / span 2;
-  width: 32px; height: 32px;
-  background: var(--ink);
-  color: var(--orange);
-  display: grid; place-items: center;
-  font-family: var(--serif);
-  font-size: 19px;
-  line-height: 1;
+  display: block;
+  height: 32px;
+  width: auto;
   flex-shrink: 0;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 .brand-line-1 {
   grid-column: 2; grid-row: 1;
@@ -212,8 +208,8 @@ em { font-style: italic; }
    mark + title clickable as one target. */
 .brand-home:hover .brand-line-1,
 .brand-home:focus-visible .brand-line-1 { color: var(--orange); }
-.brand-home:hover .brand-mark,
-.brand-home:focus-visible .brand-mark { background: var(--orange); color: var(--ink); }
+.brand-home:hover img.brand-mark,
+.brand-home:focus-visible img.brand-mark { opacity: 0.85; }
 .brand-home:focus-visible { outline: none; }
 .brand-home:focus-visible .brand-line-1 { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -226,6 +222,10 @@ em { font-style: italic; }
   .topbar-actions .btn { padding: 8px 10px; font-size: 13px; }
   /* Hide the longest button label on small screens; keep Gallery + Dark visible */
   #instructionsBtn { display: none; }
+  /* Shrink the CrimRxiv wordmark on small screens so the title isn't truncated */
+  img.brand-mark { height: 24px; }
+  .brand { column-gap: 8px; }
+  .brand-line-1 { font-size: 14px; }
 }
 
 /* ------- BUTTONS ------- */

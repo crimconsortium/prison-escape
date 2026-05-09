@@ -467,10 +467,15 @@
         <figcaption class="room-image-cap">The plate is revealed when you choose correctly.</figcaption>
       `;
     } else {
+      // Some rooms hide the caption (which contains the plate title) until the
+      // user answers correctly, so the title doesn't give the answer away.
+      const capText = r.concealCaption
+        ? `Plate ${p.num}, Carceri d'Invenzione (${p.date}). Title revealed when you answer.`
+        : captionOf(p);
       fig.innerHTML = `
         <div class="plate-stamp"><span class="roman">PL. ${p.num}</span> Carceri</div>
-        <img src="${p.img}" alt="${escapeHtml(captionOf(p))}" loading="${state.roomIdx === 0 ? "eager" : "lazy"}" />
-        <figcaption class="room-image-cap">${escapeHtml(captionOf(p))}</figcaption>
+        <img src="${p.img}" alt="${escapeHtml(capText)}" loading="${state.roomIdx === 0 ? "eager" : "lazy"}" />
+        <figcaption class="room-image-cap">${escapeHtml(capText)}</figcaption>
       `;
     }
 
@@ -792,7 +797,7 @@
     }
     updateHud();
 
-    // Reveal concealed plate
+    // Reveal concealed plate (image-choice / compare / odd-one-out)
     const veil = document.querySelector(".plate-veil");
     if (veil) {
       const fig = veil.closest(".room-image");
@@ -803,6 +808,12 @@
           <figcaption class="room-image-cap">${escapeHtml(captionOf(p))}</figcaption>
         `;
       }
+    }
+
+    // Reveal a previously hidden caption (rooms where the title is the answer)
+    if (r.concealCaption) {
+      const cap = document.querySelector(".room-image .room-image-cap");
+      if (cap) cap.textContent = captionOf(p);
     }
 
     const next = $("#nextRow");
