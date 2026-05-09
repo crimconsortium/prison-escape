@@ -135,11 +135,12 @@
       plate: "V", type: "hotspot",
       eyebrow: "Room 7 · Look Closely",
       title: "Find what gives this plate its name",
-      prompt: "This plate is titled after a carved detail on the masonry. <strong>Click the region of the image where you'd expect to find lions.</strong>",
-      // hotspot grid: 4×3 cells (12). The correct cells form a band along the lower-left wall.
-      grid: { cols: 4, rows: 3, correct: [4, 8] },
-      hint: "Lion bas-reliefs are carved into the wall, not roaming the floor. Look at the lower portion of the masonry.",
-      onCorrect: "Yes. The Lion Bas-Reliefs — Roman heraldry pressed into prison stone."
+      prompt: "This plate is titled after two carved beasts that guard the chamber. <strong>Click anywhere on either lion.</strong>",
+      // hotspot grid: 4×3 cells (12), numbered left-to-right, top-to-bottom.
+      // Bottom row = cells 9 (left), 10, 11, 12 (right). The two lions sit in cells 10 and 11.
+      grid: { cols: 4, rows: 3, correct: [10, 11] },
+      hint: "The lions are large free-standing sculptures along the bottom of the image, flanking the foreground.",
+      onCorrect: "Yes. The Lion Bas-Reliefs — two carved beasts guarding the foreground of the chamber."
     },
 
     // ROOM 8 — Plate VII — title-cloze
@@ -190,34 +191,36 @@
       onCorrect: "Right. Prisoners on a Projecting Platform — the human cost of the Carceri shown in plain view."
     },
 
-    // ROOM 11 — Plate XI — compare two plates
+    // ROOM 11 — Plate XI — read the foreground structure
     {
-      plate: "XI", type: "compare",
-      eyebrow: "Room 11 · Two Plates",
-      title: "Spot the shell",
-      prompt: "Two plates sit side by side. <strong>Which one features a carved shell ornament on a great arch?</strong>",
-      options: [
-        { plate: "XI",   correct: true  },
-        { plate: "XIV",  correct: false }
+      plate: "XI", type: "mc",
+      eyebrow: "Room 11 · Crossing the Void",
+      title: "What carries traffic across the chamber?",
+      prompt: "A long wooden structure cuts across the foreground of this plate. <strong>What is it?</strong>",
+      choices: [
+        { text: "A long inclined staircase running diagonally across the scene.", correct: true },
+        { text: "A row of stone benches.", correct: false },
+        { text: "A circular fountain.", correct: false },
+        { text: "A herd of chained animals.", correct: false }
       ],
-      hint: "Look at the keystone of the arch — only one of these has a sculpted shell motif.",
-      onCorrect: "Yes. The Arch with a Shell Ornament — a Baroque flourish in a brutal vault."
+      hint: "Trace the strongest diagonal line in the lower half of the picture.",
+      onCorrect: "Right. A great wooden staircase carries figures across the void beneath the arch."
     },
 
-    // ROOM 12 — Plate XII — odd one out
+    // ROOM 12 — Plate XII — read the platform
     {
-      plate: "XII", type: "odd-one-out",
-      eyebrow: "Room 12 · Three Devices, One Without",
-      title: "Which plate has no machine?",
-      prompt: "Three of these plates feature a piece of machinery, scaffolding, or a heavy wooden device. <strong>Pick the one that has none of those.</strong>",
+      plate: "XII", type: "mc",
+      eyebrow: "Room 12 · The Platform",
+      title: "What runs along the front of the platform?",
+      prompt: "A raised stone platform spans the lower middle of this plate. <strong>What hangs along its front edge?</strong>",
       choices: [
-        { plate: "II",  correct: false },
-        { plate: "IX",  correct: false },
-        { plate: "XIV", correct: true  },
-        { plate: "XII", correct: false }
+        { text: "A row of swagged iron chains looped between posts.", correct: true },
+        { text: "A line of burning torches.", correct: false },
+        { text: "A painted mural of saints.", correct: false },
+        { text: "A row of potted plants.", correct: false }
       ],
-      hint: "The rack, the wheel, and the sawhorse are all wooden devices. Only one of these plates is just architecture.",
-      onCorrect: "Right. The Gothic Arch is pure space and stone — no machine, just architecture."
+      hint: "Look at the front of the central platform — chains droop in U-shaped loops between short posts.",
+      onCorrect: "Right. Heavy chains swag along the platform — a Piranesian fence of iron."
     },
 
     // ROOM 13 — Plate XIII — title-cloze
@@ -241,7 +244,7 @@
       plate: "XIV", type: "mc",
       eyebrow: "Room 14 · Architectural Vocabulary",
       title: "What kind of arch?",
-      prompt: "The dominant arch in this plate has a specific architectural style. <strong>Which one?</strong>",
+      prompt: "The highest arch in this plate has a specific architectural style. <strong>Which one?</strong>",
       choices: [
         { text: "A round Roman arch.", correct: false },
         { text: "A pointed Gothic arch.", correct: true },
@@ -252,18 +255,20 @@
       onCorrect: "Right. The Gothic Arch — pointed, medieval, out of place in a Roman prison."
     },
 
-    // ROOM 15 — Plate XV — compare two plates
+    // ROOM 15 — Plate XV — read the central pier
     {
-      plate: "XV", type: "compare",
-      eyebrow: "Room 15 · Two Piers",
-      title: "Light or chains?",
-      prompt: "Two plates show massive stone piers. <strong>Which one is illuminated by a hanging lamp?</strong>",
-      options: [
-        { plate: "XV",   correct: true  },
-        { plate: "XVI",  correct: false }
+      plate: "XV", type: "mc",
+      eyebrow: "Room 15 · The Central Pier",
+      title: "What crowns the central column?",
+      prompt: "A heavy stone column rises at the center of this plate, capped by something that lights the chamber. <strong>What sits on top?</strong>",
+      choices: [
+        { text: "A statue of an emperor.", correct: false },
+        { text: "A hanging lamp set against a circular halo.", correct: true },
+        { text: "A clock face.", correct: false },
+        { text: "A nest of birds.", correct: false }
       ],
-      hint: "One pier carries a light source; the other carries iron.",
-      onCorrect: "Yes. The Pier with a Lamp — the lamp throws shadow across the stone."
+      hint: "Look at the top of the central column. A round disc frames the silhouette.",
+      onCorrect: "Yes. The Pier with a Lamp — a lamp framed by a great round halo crowns the column."
     },
 
     // ROOM 16 — Plate XVI — final combo
