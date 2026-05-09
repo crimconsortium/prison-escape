@@ -19,17 +19,17 @@
       img: "assets/01_title_page.jpg",
       caption: "Plate I, the Title Page (1761). LACMA, public domain.",
       eyebrow: "Room 1 · The Title Plate",
-      title: "Where are you?",
-      prompt: "You wake inside an etching. The script across the page names what surrounds you. <strong>Read the title plate</strong> and choose the place that fits.",
+      title: "Read the inscription",
+      prompt: "Look closely at the cartouche on the wall. Piranesi etched the series' title into the stone. <strong>Which Italian word, visible on the plate, names what these prisons are?</strong>",
       type: "mc",
       choices: [
-        { text: "A Roman public square at midday.", correct: false },
-        { text: "An imaginary prison drawn from invention.", correct: true },
-        { text: "A working blueprint for a real building.", correct: false },
-        { text: "A theatrical stage set for an opera.", correct: false }
+        { text: "ROMA — ‘Rome.’", correct: false },
+        { text: "INVENZIONE — ‘invention.’", correct: true },
+        { text: "PALAZZO — ‘palace.’", correct: false },
+        { text: "ANTICHITÀ — ‘antiquities.’", correct: false }
       ],
-      hint: "The series is called Le Carceri d'Invenzione — literally, ‘the Prisons of Invention.’ The architecture is invented, not surveyed.",
-      onCorrect: "Yes. Carceri d'invenzione means invented prisons. Welcome inside."
+      hint: "The full title etched on the plate is Carceri d'Invenzione. Find the second word.",
+      onCorrect: "Yes. Carceri d'Invenzione — prisons of invention. The architecture you're about to walk through was never built."
     },
 
     // ---------- ROOM 2 ----------
