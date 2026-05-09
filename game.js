@@ -67,36 +67,36 @@
       onCorrect: "Right. Curators call this one The Round Tower."
     },
 
-    // ROOM 3 — Plate IV — Grand Piazza (scale)
+    // ROOM 3 — Plate IV — Grand Piazza: read the bridge
     {
       plate: "IV", type: "mc",
-      eyebrow: "Room 3 · Reading Scale",
-      title: "How big is this room?",
-      prompt: "Piranesi exaggerates scale on purpose. Compare the human figures to the architecture around them. <strong>What does the scale tell you about this hall?</strong>",
+      eyebrow: "Room 3 · Across the Hall",
+      title: "What spans the middle of the chamber?",
+      prompt: "A colossal stone arch frames the view. Halfway up, something stretches all the way across the open hall. <strong>What is it?</strong>",
       choices: [
-        { text: "It's roughly the size of a small chapel.", correct: false },
-        { text: "It's vast — the figures are barely visible against the architecture.", correct: true },
-        { text: "The figures and architecture are in normal proportion.", correct: false },
-        { text: "There are no human figures in this plate.", correct: false }
+        { text: "A long suspended bridge, its face decorated with carved bas-relief panels.", correct: true },
+        { text: "A row of empty prison cells with iron bars.", correct: false },
+        { text: "A spiral staircase coiling up to the ceiling.", correct: false },
+        { text: "A wide curtain of falling water.", correct: false }
       ],
-      hint: "Scan the galleries and stairs. The tiny silhouettes are people.",
-      onCorrect: "Yes. The hall is enormous — almost an interior city. Curators call this one The Grand Piazza."
+      hint: "Look at the horizontal band cutting across the middle of the arch. Notice the carved panels along its side.",
+      onCorrect: "Right. A bridge crosses the entire piazza, its flank lined with sculpted reliefs. Curators call this one The Grand Piazza."
     },
 
-    // ROOM 4 — Plate VIII — staircase with trophies (title→plate)
+    // ROOM 4 — Plate VIII — staircase with trophies (read the diagonal)
     {
       plate: "VIII", type: "mc",
       eyebrow: "Room 4 · Staircase",
-      title: "What climbs the wall?",
-      prompt: "A grand staircase rises through the chamber. <strong>What unusual decoration is mounted along its walls?</strong>",
+      title: "How does the eye climb this scene?",
+      prompt: "One element dominates the right side of the plate and pulls the eye upward. <strong>What is it?</strong>",
       choices: [
-        { text: "Iron chains.", correct: false },
-        { text: "Wooden ladders.", correct: false },
-        { text: "Trophies of arms and armor.", correct: true },
-        { text: "Hanging lamps.", correct: false }
+        { text: "A heavy spiral staircase coiling around a central pillar.", correct: false },
+        { text: "A long straight staircase rising diagonally from lower left to upper right.", correct: true },
+        { text: "A rope ladder dropped from the ceiling.", correct: false },
+        { text: "A row of identical arched doorways at ground level.", correct: false }
       ],
-      hint: "Look for clusters of weapons and armor displayed as ornament.",
-      onCorrect: "Right. The Staircase with Trophies — Roman martial display turned into prison wall."
+      hint: "Trace the strongest diagonal line in the picture.",
+      onCorrect: "Right. The Staircase with Trophies — a single great flight of steps cuts across the chamber, lined with martial ornament."
     },
 
     // ROOM 5 — Plate II — sequence: order means of restraint
