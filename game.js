@@ -145,7 +145,7 @@
 
     // ROOM 8 — Plate VII — title-cloze
     {
-      plate: "VII", type: "cloze",
+      plate: "VII", type: "cloze", concealCaption: true,
       eyebrow: "Room 8 · Name the Plate",
       title: "Fill in the title",
       promptTemplate: "Curators gave this plate the title: <strong>“The ____.”</strong> Pick the missing word.",
@@ -161,7 +161,7 @@
 
     // ROOM 9 — Plate IX — title→plate
     {
-      plate: "IX", type: "mc",
+      plate: "IX", type: "mc", concealCaption: true,
       eyebrow: "Room 9 · Title to Plate",
       title: "Match the title",
       prompt: "This room's plate is built around a single immense object. <strong>Which curatorial title fits what dominates the picture?</strong>",
@@ -177,7 +177,7 @@
 
     // ROOM 10 — Plate X — read figures
     {
-      plate: "X", type: "mc",
+      plate: "X", type: "mc", concealCaption: true,
       eyebrow: "Room 10 · Reading the Figures",
       title: "Who stands on the platform?",
       prompt: "A stone platform juts into the chamber. <strong>What is happening to the figures on it?</strong>",
@@ -225,7 +225,7 @@
 
     // ROOM 13 — Plate XIII — title-cloze
     {
-      plate: "XIII", type: "cloze",
+      plate: "XIII", type: "cloze", concealCaption: true,
       eyebrow: "Room 13 · Name the Plate",
       title: "Fill in the title",
       promptTemplate: "Curators gave this plate the title: <strong>“The ____.”</strong> Pick the missing word.",
