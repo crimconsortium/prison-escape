@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Escape the Carceri — A Piranesi Game</title>
+<meta name="description" content="A free, single-page educational escape game built on Piranesi's Carceri d'Invenzione. Provided by the CrimRxiv Consortium." />
+<meta name="theme-color" content="#0a0a0a" />
+<meta property="og:title" content="Escape the Carceri" />
+<meta property="og:description" content="Six rooms. Six prisons. One escape. A Piranesi-inspired educational game from the CrimRxiv Consortium." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='20' fill='%23f68212'>C</text></svg>" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to game</a>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">C</span>
+    <span class="brand-text">
+      <span class="brand-line-1">Escape the Carceri</span>
+      <span class="brand-line-2">A Piranesi game · CrimRxiv Consortium</span>
+    </span>
+  </div>
+  <div class="topbar-actions">
+    <button id="instructionsBtn" class="btn btn-ghost" aria-haspopup="dialog">How to play</button>
+    <button id="themeBtn" class="btn btn-ghost" aria-pressed="false" aria-label="Toggle dark mode">
+      <span class="theme-label">Dark</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- INTRO -->
+  <section id="screen-intro" class="screen screen-intro is-active">
+    <div class="intro-grid">
+      <div class="intro-copy">
+        <p class="kicker">An educational escape game</p>
+        <h1 class="display">Six prisons.<br/>One way out.</h1>
+        <p class="lead">In 1745, Giovanni Battista Piranesi began etching <em>Le Carceri d'Invenzione</em> — the <em>Imaginary Prisons</em>. Vast vaults. Endless stairs. Machinery without purpose. You are inside them now.</p>
+        <p class="lead">Move from plate to plate. Read what the architecture is doing. Earn your escape.</p>
+        <div class="cta-row">
+          <button id="startBtn" class="btn btn-primary btn-lg">Start escape</button>
+          <a href="#about" class="btn btn-ghost btn-lg">About &amp; sources</a>
+        </div>
+        <p class="micro">Free · No account · Works on phones · Plays in ~10 minutes</p>
+      </div>
+      <figure class="intro-figure">
+        <img src="assets/01_title_page.jpg" alt="Piranesi's frontispiece etching for Le Carceri d'Invenzione, second edition, 1761." loading="eager" />
+        <figcaption>Title plate, <em>Le Carceri d'Invenzione</em>, 1761. LACMA, public domain.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="screen-game" class="screen screen-game" hidden>
+    <div class="hud">
+      <div class="hud-progress">
+        <span class="hud-label" id="hudLabel">Room 1 of 6</span>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="progressBar">
+          <span class="progress-fill" id="progressFill"></span>
+        </div>
+      </div>
+      <div class="hud-actions">
+        <button id="hintBtn" class="btn btn-ghost btn-sm">Hint</button>
+        <button id="restartBtn" class="btn btn-ghost btn-sm" title="Restart from Room 1">Restart</button>
+      </div>
+    </div>
+
+    <div class="room" id="room"></div>
+  </section>
+
+  <!-- CERTIFICATE -->
+  <section id="screen-done" class="screen screen-done" hidden>
+    <div class="done-wrap">
+      <p class="kicker">You made it</p>
+      <h2 class="display">You escaped.</h2>
+      <p class="lead">Print, save as PDF, or share. Your name stays in your browser only — nothing is uploaded.</p>
+
+      <form id="certForm" class="cert-form" autocomplete="off">
+        <label for="certName" class="cert-label">Name on certificate</label>
+        <input id="certName" name="certName" type="text" maxlength="60" placeholder="Type your name" />
+        <button type="submit" class="btn btn-primary">Generate certificate</button>
+      </form>
+
+      <div id="certificate" class="certificate" aria-live="polite">
+        <div class="cert-frame">
+          <div class="cert-corner tl" aria-hidden="true"></div>
+          <div class="cert-corner tr" aria-hidden="true"></div>
+          <div class="cert-corner bl" aria-hidden="true"></div>
+          <div class="cert-corner br" aria-hidden="true"></div>
+          <p class="cert-eyebrow">Certificate of escape</p>
+          <h3 class="cert-title">I Escaped Piranesi's Carceri</h3>
+          <p class="cert-this">This certifies that</p>
+          <p class="cert-name" id="certNameOut">—</p>
+          <p class="cert-body">navigated the six imaginary prisons of Giovanni Battista Piranesi's <em>Carceri d'Invenzione</em> and emerged on the other side.</p>
+          <div class="cert-foot">
+            <div>
+              <span class="cert-foot-label">Date</span>
+              <span class="cert-foot-value" id="certDateOut">—</span>
+            </div>
+            <div>
+              <span class="cert-foot-label">Issued by</span>
+              <span class="cert-foot-value">CrimRxiv Consortium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="done-actions">
+        <button id="printBtn" class="btn btn-primary">Print certificate</button>
+        <button id="playAgainBtn" class="btn btn-ghost">Play again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / SOURCES -->
+  <section id="about" class="screen-static about">
+    <div class="about-grid">
+      <div>
+        <h2>About this game</h2>
+        <p><strong>Escape the Carceri</strong> is a free, single-page educational game built around Giovanni Battista Piranesi's <em>Le Carceri d'Invenzione</em> (Imaginary Prisons), a series of etchings begun in 1745 and reworked in 1761. The puzzles are grounded in plate titles and standard museum descriptions — stairs, towers, chains, machinery, scale, and confinement.</p>
+        <p>The game is provided by the <strong>CrimRxiv Consortium</strong>. Everything runs in your browser. No accounts, no cookies, no analytics, no data leaves your device.</p>
+
+        <h3>Sources &amp; rights</h3>
+        <p>All Piranesi etchings used here are in the <strong>public domain</strong>. The high-resolution scans were donated by the <strong>Los Angeles County Museum of Art (LACMA)</strong>, William Randolph Hearst Collection, and made available through Wikimedia Commons.</p>
+        <ul class="sources">
+          <li><a href="https://commons.wikimedia.org/wiki/File:Title_Page_LACMA_46.27.1.jpg" target="_blank" rel="noopener">Title Page, plate I</a> — LACMA 46.27.1, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Man_on_the_Rack_LACMA_46.27.2.jpg" target="_blank" rel="noopener">The Man on the Rack, plate II</a> — LACMA 46.27.2, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Round_Tower_LACMA_46.27.3.jpg" target="_blank" rel="noopener">The Round Tower, plate III</a> — LACMA 46.27.3, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Lion_Bas-Reliefs_LACMA_46.27.5.jpg" target="_blank" rel="noopener">The Lion Bas-Reliefs, plate V</a> — LACMA 46.27.5, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Smoking_Fire_LACMA_46.27.6.jpg" target="_blank" rel="noopener">The Smoking Fire, plate VI</a> — LACMA 46.27.6, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Giant_Wheel_LACMA_46.27.9.jpg" target="_blank" rel="noopener">The Giant Wheel, plate IX</a> — LACMA 46.27.9, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Gothic_Arch_LACMA_46.27.14.jpg" target="_blank" rel="noopener">The Gothic Arch, plate XIV</a> — LACMA 46.27.14, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:The_Pier_with_Chains_LACMA_46.27.16.jpg" target="_blank" rel="noopener">The Pier with Chains, plate XVI</a> — LACMA 46.27.16, public domain.</li>
+        </ul>
+        <p class="micro">Piranesi died in 1778; the etchings are out of copyright in every jurisdiction. LACMA marks the high-resolution scans as public domain. We re-host the images locally so the game is robust and offline-friendly after first load.</p>
+
+        <h3>License</h3>
+        <p>Site code: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a>. Original copy, design, and puzzle text: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> — please credit the CrimRxiv Consortium when reusing.</p>
+      </div>
+      <aside class="about-aside">
+        <h3>What you'll do</h3>
+        <ol class="about-list">
+          <li>Get oriented in Piranesi's title plate.</li>
+          <li>Identify a visible architectural feature.</li>
+          <li>Match a clue to the right plate.</li>
+          <li>Match a title to a plate.</li>
+          <li>Read scale, machinery, and confinement.</li>
+          <li>Synthesize the journey to escape.</li>
+        </ol>
+        <p>Click-only. No typing required (except your name on the certificate).</p>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="crimrxiv-cta">
+  <div class="cta">
+    <p class="kicker">Provided by the CrimRxiv Consortium</p>
+    <h2 class="cta-headline">CrimRxiv is criminology's open-access hub.</h2>
+    <p class="cta-body">Find research. Share research. Read for free. CrimRxiv is a global open-access home for criminology, powered by the CrimRxiv Consortium.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="https://www.crimrxiv.com/" target="_blank" rel="noopener">Visit CrimRxiv</a>
+      <a class="btn btn-ghost btn-lg" href="https://www.crimrxiv.com/submit" target="_blank" rel="noopener">Share your work</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <p>This website is provided by the <a href="https://www.crimrxiv.com/consortium" target="_blank" rel="noopener">CrimRxiv Consortium</a>. Etchings by Giovanni Battista Piranesi (1720–1778), public domain via LACMA / Wikimedia Commons. Site code MIT, content CC BY 4.0.</p>
+  </div>
+</footer>
+
+<!-- INSTRUCTIONS DIALOG -->
+<dialog id="instructionsDialog" class="dialog" aria-labelledby="instructionsTitle">
+  <div class="dialog-inner">
+    <h2 id="instructionsTitle">How to play</h2>
+    <ul>
+      <li>You'll move through six plates from Piranesi's <em>Carceri</em>.</li>
+      <li>Every puzzle is click-only. There's nothing to type until the end.</li>
+      <li>Stuck? Hit <strong>Hint</strong>. It won't penalize you.</li>
+      <li>Wrong answers don't end the game — you can keep trying.</li>
+      <li>At the end you'll generate a printable certificate. Your name stays in your browser.</li>
+    </ul>
+    <button class="btn btn-primary" data-close-dialog>Got it</button>
+  </div>
+</dialog>
+
+<!-- TOAST -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="game.js" defer></script>
+</body>
+</html>
