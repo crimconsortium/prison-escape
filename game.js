@@ -413,6 +413,13 @@
     history.replaceState(null, "", location.pathname);
     showScreen("intro");
   });
+  const homeLink = $("#homeLink");
+  if (homeLink) homeLink.addEventListener("click", (e) => {
+    // Intercept so we don't reload the page (preserves theme + in-memory state)
+    e.preventDefault();
+    if (location.hash) history.replaceState(null, "", location.pathname);
+    showScreen("intro");
+  });
   restartBtn.addEventListener("click", () => {
     if (window.confirm("Restart from Room 1?")) startGame();
   });
